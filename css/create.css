@@ -1,0 +1,34 @@
+#main
+{
+	margin: 0px auto;
+}
+
+.inputTable
+{
+	width: 100%;
+}
+.inputTable tr
+{
+	width: 100%;
+}
+
+input
+{
+	width: 100%;
+	margin-top: 5px;
+}
+button
+{
+	width: 100%;
+}
+textarea
+{
+	width: 100%;
+	min-height: 100px;
+}
+
+fieldset
+{
+	width: 600px;
+	margin: auto;
+}
