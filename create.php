@@ -106,7 +106,7 @@
 							<fieldset>
 								<legend>Stream Times</legend>
 
-								<input type="hidden" id="sortedTimes" name="streamTimes" />
+								<input type="hidden" id="sortedTimes" name="sortedTimes" />
 								<table class="inputTable">
 									<thead>
 										<th>Day</th>
