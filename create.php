@@ -14,12 +14,12 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		if(isset($_POST["secret"]))
+		if(isset($_POST["secret"]) && $_POST["secret"] !== "")
 			$_POST["secret"] = md5($_POST["secret"]);
 
 		function checkParameter($name, $reg, $msg = false)
 		{
-			global $config;
+			global $error, $config;
 
 			if(!isset($_POST[$name]) || !preg_match($reg, $_POST[$name]))
 			{
@@ -46,7 +46,7 @@
 		checkParameter("offlineMessage", "/^[^<>]+$/");
 		checkParameter("secret", "/^.{6,}$/", "Secret must be minimum 6 characters long");
 
-		if(!$error)
+		if($error === false)
 		{
 			require 'Predis/Autoloader.php';
 			Predis\Autoloader::register();
@@ -56,6 +56,8 @@
 			$redis->set($stream, json_encode($config));
 			header("Location: index.php?s=" . $config["name"]);
 		}
+
+		unset($config["secret"]);
 	}
 ?>
 
@@ -104,6 +106,8 @@
 											See <a href="timeformat.html">this table</a> for a list of supported insertions in Time format.
 											<br />
 											Timezone is the offset in minutes to UTC. This should be set correctly automatically
+											<br />
+											Background can be a color name or hexcode
 										</td>
 									</tr>
 								</table>
@@ -217,6 +221,9 @@
 									<tr>
 										<td>Secret</td>
 										<td><input type="password" name="secret" value="<?= $config["secret"] ?>" /></td>
+									</tr>
+									<tr>
+										<td colspan="2">You can later edit the above settings using your secret. Its like a password</td>
 									</tr>
 									<tr>
 										<td colspan="2"><input type="submit" value=" save " /></td>

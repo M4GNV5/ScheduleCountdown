@@ -3,8 +3,8 @@
 
 	if(!isset($_GET["s"]) || !preg_match("/^[a-zA-Z0-9]+$/", $_GET["s"]))
 	{
-		die("error");
-		header("Location: create");
+		header("Location: create.php");
+		exit();
 	}
 
 	require 'Predis/Autoloader.php';
