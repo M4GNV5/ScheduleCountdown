@@ -6,6 +6,7 @@
 		"name" => "",
 		"timeFormat" => "h:mm A, MMMM Do",
 		"timezone" => "-((new Date()).getTimezoneOffset())",
+		"bgcolor" => "white",
 		"sortedTimes" => "[[{\"day\":0,\"hour\":10,\"minute\":30}],[],[],[],[],[{\"day\":5,\"hour\":20,\"minute\":15}],[]]",
 		"offlineMessage" => "Next stream in {hours}h, {minutes}min and {seconds}s\n\nIn your time: {viewersTime}\n{twitchName}'s time: {streamersTime}",
 		"onlineMessage" => "Stream is currently online!"
@@ -39,6 +40,7 @@
 		checkParameter("name", "/^[a-zA-Z0-9_ ]+$/");
 		checkParameter("timeFormat", "/^[a-zA-Z0-9:, ]+$/");
 		checkParameter("timezone", "/^[0-9]+$/");
+		checkParameter("bgcolor", "/^(#[0-9a-fA-F]{6})|([a-zA-Z]+)$/");
 		checkParameter("sortedTimes", "/^[^<>]+$/");
 		checkParameter("onlineMessage", "/^[^<>]+$/");
 		checkParameter("offlineMessage", "/^[^<>]+$/");
@@ -89,6 +91,10 @@
 									<tr>
 										<td>Timezone </td>
 										<td><input id="timezone" type="number" name="timezone" onchange="updatePreview()" /></td>
+									</tr>
+									<tr>
+										<td>Background </td>
+										<td><input id="bgcolor" type="text" name="bgcolor" onchange="updatePreview()" /></td>
 									</tr>
 									<tr>
 										<td colspan="2"><hr /></td>
@@ -237,6 +243,7 @@
 			var offlineMessage = <?= json_encode($config["offlineMessage"] ); ?>;
 			var onlineMessage = <?= json_encode($config["onlineMessage"] ); ?>;
 			var sortedTimes = <?= $config["sortedTimes"] ?>;
+			var bgcolor = <?= json_encode($config["bgcolor"]) ?>;
 		</script>
 		<script type="text/javascript" src="js/moment.js"></script>
 		<script type="text/javascript" src="js/edit.js"></script>

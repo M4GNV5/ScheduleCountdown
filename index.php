@@ -22,7 +22,7 @@
 	<head>
 		 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 	</head>
-	<body style="background-color: "<?= $config["color"] ?>";">
+	<body style="background-color: <?= $config["bgcolor"] ?>;">
 		<div id="output" class="display-output">
 			<noscript>Please enable Javascript</noscript>
 		</div>

@@ -1,6 +1,7 @@
 var twitchNameEl = document.getElementById("twitchName");
 var timeFormatEl = document.getElementById("timeFormat");
 var timezoneEl = document.getElementById("timezone");
+var bgcolorEl = document.getElementById("bgcolor");
 var onlineMessageEl = document.getElementById("onlineMessage");
 var offlineMessageEl = document.getElementById("offlineMessage");
 var sortedTimesEl = document.getElementById("sortedTimes");
@@ -12,6 +13,7 @@ var streamTimes = sortedTimes[0].concat(sortedTimes[1], sortedTimes[2], sortedTi
 	timezoneEl.value = streamerOffset;
 	onlineMessageEl.value = onlineMessage;
 	offlineMessageEl.value = offlineMessage;
+	bgcolorEl.value = bgcolor;
 
 	var btn = document.getElementById("addStreamTimeBtn").parentNode.parentNode;
 	var parent = btn.parentNode;
@@ -35,6 +37,7 @@ function updatePreview()
 	streamerOffset = timezoneEl.value;
 	onlineMessage = onlineMessageEl.value;
 	offlineMessage = offlineMessageEl.value;
+	document.body.style = "background-color: " + bgcolorEl.value + ";";
 
 	updateTime();
 }
