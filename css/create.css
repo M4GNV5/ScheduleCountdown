@@ -1,7 +1,6 @@
 #main
 {
 	margin: 0px auto;
-	background-color: white;
 }
 
 .inputTable
@@ -13,6 +12,10 @@
 	width: 100%;
 }
 
+form
+{
+	background-color: white;
+}
 input
 {
 	width: 100%;
