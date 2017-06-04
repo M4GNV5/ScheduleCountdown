@@ -79,6 +79,24 @@
 				<tr>
 					<td>
 						<form method="POST" action="create.php">
+							<?php
+								if($error !== false)
+								{
+									?>
+										<fieldset>
+											<legend>Errors</legend>
+											<table class="inputTable" id="errorList">
+												<?php
+													foreach($error as $key => $msg)
+													{
+														echo("<tr><td>$msg</td></tr>");
+													}
+												?>
+											</table>
+										</fieldset>
+									<?php
+								}
+							?>
 							<fieldset>
 								<legend>Basic Information</legend>
 								<table class="inputTable">

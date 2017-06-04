@@ -3,6 +3,11 @@
 	margin: 0px auto;
 }
 
+#errorList
+{
+	color: red;
+}
+
 .inputTable
 {
 	width: 100%;
