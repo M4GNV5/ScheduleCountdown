@@ -27,6 +27,8 @@ var streamTimes = sortedTimes[0].concat(sortedTimes[1], sortedTimes[2], sortedTi
 		el.children[0].children[0].value = streamTimes[0].day;
 		el.children[1].children[0].value = streamTimes[0].hour;
 		el.children[2].children[0].value = streamTimes[0].minute;
+
+		updateStreamTime(el);
 	}
 })();
 

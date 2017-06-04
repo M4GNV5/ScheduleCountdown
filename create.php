@@ -14,9 +14,6 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		if(isset($_POST["secret"]) && $_POST["secret"] !== "")
-			$_POST["secret"] = md5($_POST["secret"]);
-
 		function checkParameter($name, $reg, $msg = false)
 		{
 			global $error, $config;
@@ -48,6 +45,8 @@
 
 		if($error === false)
 		{
+			$config["secret"] = hash("sha256", $config["config"]);
+
 			require 'Predis/Autoloader.php';
 			Predis\Autoloader::register();
 
@@ -89,7 +88,8 @@
 												<?php
 													foreach($error as $key => $msg)
 													{
-														echo("<tr><td>$msg</td></tr>");
+														if($msg)
+															echo("<tr><td>$msg</td></tr>");
 													}
 												?>
 											</table>
