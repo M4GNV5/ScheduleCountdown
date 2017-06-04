@@ -20,7 +20,7 @@
 ?>
 <html>
 	<head>
-		 <link rel="stylesheet" type="text/css" href="css/styles.css" />
+		 <link rel="stylesheet" type="text/css" href="static/styles.css" />
 	</head>
 	<body style="background-color: <?= $config["bgcolor"] ?>;">
 		<div id="output" class="display-output">
@@ -36,7 +36,7 @@
 			var onlineMessage = <?= json_encode($config["onlineMessage"] ); ?>;
 			var sortedTimes = <?= $config["sortedTimes"] ?>;
 		</script>
-		<script type="text/javascript" src="js/moment.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="static/moment.js"></script>
+		<script type="text/javascript" src="static/main.js"></script>
 	</body>
 </html>

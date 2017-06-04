@@ -63,8 +63,8 @@
 
 <html>
 	<head>
-		 <link rel="stylesheet" type="text/css" href="css/create.css" />
-		  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+		 <link rel="stylesheet" type="text/css" href="static/create.css" />
+		  <link rel="stylesheet" type="text/css" href="static/styles.css" />
 	</head>
 	<body>
 		<h1>Stream cooldown creator</h1>
@@ -157,7 +157,7 @@
 											</td>
 											<td><input type="number" value="20" onchange="updateStreamTime(this.parentNode.parentNode)" /></td>
 											<td><input type="number" value="15" onchange="updateStreamTime(this.parentNode.parentNode)" /></td>
-											<td><button type="button" onclick="delStreamTime(this.parentNode.parentNode)"><img src="img/trash.svg" /></button>
+											<td><button type="button" onclick="delStreamTime(this.parentNode.parentNode)"><img src="static/trash.svg" /></button>
 										</tr>
 										<tr>
 											<td colspan="4">
@@ -270,8 +270,8 @@
 			var sortedTimes = <?= $config["sortedTimes"] ?>;
 			var bgcolor = <?= json_encode($config["bgcolor"]) ?>;
 		</script>
-		<script type="text/javascript" src="js/moment.js"></script>
-		<script type="text/javascript" src="js/edit.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="static/moment.js"></script>
+		<script type="text/javascript" src="static/edit.js"></script>
+		<script type="text/javascript" src="static/main.js"></script>
 	</body>
 </html>
