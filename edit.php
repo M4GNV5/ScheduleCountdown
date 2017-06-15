@@ -14,6 +14,23 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
+		require 'Predis/Autoloader.php';
+		Predis\Autoloader::register();
+		$redis = new Predis\Client();
+
+		$stream = "streamcd_" . $_POST["name"];
+		if($redis->exists($stream))
+		{
+			$config = json_decode($redis->get($stream), true);
+			if(!isset($_POST["secret"]) || hash("sha256", $_POST["secret"]) !== $config["secret"])
+			{
+				header("Location: login.php?s=" . $config["name"]);
+				exit();
+			}
+		}
+
+
+
 		function checkParameter($name, $reg, $msg = false)
 		{
 			global $error, $config;
@@ -45,18 +62,14 @@
 
 		if($error === false)
 		{
-			$config["secret"] = hash("sha256", $config["config"]);
-
-			require 'Predis/Autoloader.php';
-			Predis\Autoloader::register();
-
-			$redis = new Predis\Client();
+			$config["secret"] = hash("sha256", $config["secret"]);
 			$stream = "streamcd_" . $config["name"];
-			$redis->set($stream, json_encode($config));
-			header("Location: index.php?s=" . $config["name"]);
-		}
 
-		unset($config["secret"]);
+			$redis->set($stream, json_encode($config));
+
+			header("Location: index.php?s=" . $config["name"]);
+			exit();
+		}
 	}
 ?>
 
@@ -77,7 +90,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<form method="POST" action="create.php">
+						<form method="POST" action="edit.php">
 							<?php
 								if($error !== false)
 								{

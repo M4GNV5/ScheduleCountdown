@@ -3,7 +3,7 @@
 
 	if(!isset($_GET["s"]) || !preg_match("/^[a-zA-Z0-9]+$/", $_GET["s"]))
 	{
-		header("Location: create.php");
+		header("Location: edit.php");
 		exit();
 	}
 
@@ -25,6 +25,10 @@
 	<body style="background-color: <?= $config["bgcolor"] ?>;">
 		<div id="output" class="display-output">
 			<noscript>Please enable Javascript</noscript>
+		</div>
+
+		<div id="footer">
+			<a href="login.php?s=<?= $_GET["s"] ?>">edit</a>
 		</div>
 
 		<script>
