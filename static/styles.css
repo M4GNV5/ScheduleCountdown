@@ -27,6 +27,13 @@ div
 	margin-top: 20%;
 }
 
+#footer
+{
+	position: fixed;
+	bottom: 2px;
+    right: 5px;
+}
+
 #output
 {
 	background-color: white;
@@ -42,8 +49,8 @@ div
 .display-output
 {
 	display: inline-block;
-	position: relative;
+	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translate(-50%, -50%);
 	margin-top: 0px;
 }
